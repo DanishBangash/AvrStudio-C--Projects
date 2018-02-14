@@ -1,0 +1,2 @@
+@ECHO OFF
+"C:\Program Files\Atmel\AVR Tools\AvrAssembler2\avrasm2.exe" -S "C:\AVRStudio Projects\InstExercise\labels.tmp" -fI -W+ie -C V2E -o "C:\AVRStudio Projects\InstExercise\InstExercise.hex" -d "C:\AVRStudio Projects\InstExercise\InstExercise.obj" -e "C:\AVRStudio Projects\InstExercise\InstExercise.eep" -m "C:\AVRStudio Projects\InstExercise\InstExercise.map" "C:\AVRStudio Projects\InstExercise\InstExercise.asm"
