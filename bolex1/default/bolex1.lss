@@ -1,0 +1,157 @@
+
+bolex1.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000102  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000002  00800060  00000102  00000196  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000001  00800062  00800062  00000198  2**0
+                  ALLOC
+  3 .stab         000006cc  00000000  00000000  00000198  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  4 .stabstr      00000085  00000000  00000000  00000864  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_aranges 00000020  00000000  00000000  000008e9  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_pubnames 00000027  00000000  00000000  00000909  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_info   000000b9  00000000  00000000  00000930  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_abbrev 0000006a  00000000  00000000  000009e9  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_line   000000a5  00000000  00000000  00000a53  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_frame  00000020  00000000  00000000  00000af8  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_str    00000075  00000000  00000000  00000b18  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_pubtypes 00000012  00000000  00000000  00000b8d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	e2 e0       	ldi	r30, 0x02	; 2
+  68:	f1 e0       	ldi	r31, 0x01	; 1
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	a2 36       	cpi	r26, 0x62	; 98
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	10 e0       	ldi	r17, 0x00	; 0
+  78:	a2 e6       	ldi	r26, 0x62	; 98
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	a3 36       	cpi	r26, 0x63	; 99
+  82:	b1 07       	cpc	r27, r17
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 49 00 	call	0x92	; 0x92 <main>
+  8a:	0c 94 7f 00 	jmp	0xfe	; 0xfe <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <main>:
+y =0xc9; // int value
+
+
+char main (void) ////  char is because of the output "x" declared as a char
+{
+	x&=~y;
+  92:	30 91 62 00 	lds	r19, 0x0062
+  96:	80 91 60 00 	lds	r24, 0x0060
+  9a:	90 91 61 00 	lds	r25, 0x0061
+  9e:	48 2f       	mov	r20, r24
+  a0:	28 2f       	mov	r18, r24
+  a2:	20 95       	com	r18
+  a4:	23 23       	and	r18, r19
+  a6:	20 93 62 00 	sts	0x0062, r18
+	x=y<<3;
+  aa:	28 2f       	mov	r18, r24
+  ac:	22 0f       	add	r18, r18
+  ae:	22 0f       	add	r18, r18
+  b0:	22 0f       	add	r18, r18
+  b2:	20 93 62 00 	sts	0x0062, r18
+	x=y>>4;
+  b6:	9c 01       	movw	r18, r24
+  b8:	54 e0       	ldi	r21, 0x04	; 4
+  ba:	35 95       	asr	r19
+  bc:	27 95       	ror	r18
+  be:	5a 95       	dec	r21
+  c0:	e1 f7       	brne	.-8      	; 0xba <main+0x28>
+  c2:	20 93 62 00 	sts	0x0062, r18
+	x=y&0x3F;                       /// functions inside the main 
+  c6:	28 2f       	mov	r18, r24
+  c8:	2f 73       	andi	r18, 0x3F	; 63
+  ca:	20 93 62 00 	sts	0x0062, r18
+	x^=y;
+  ce:	20 91 62 00 	lds	r18, 0x0062
+  d2:	28 27       	eor	r18, r24
+  d4:	20 93 62 00 	sts	0x0062, r18
+	x=y&0x10;
+  d8:	40 71       	andi	r20, 0x10	; 16
+  da:	40 93 62 00 	sts	0x0062, r20
+	y|=0xF0;
+  de:	80 6f       	ori	r24, 0xF0	; 240
+  e0:	90 93 61 00 	sts	0x0061, r25
+  e4:	80 93 60 00 	sts	0x0060, r24
+	x|=y;
+  e8:	20 91 62 00 	lds	r18, 0x0062
+  ec:	28 2b       	or	r18, r24
+  ee:	20 93 62 00 	sts	0x0062, r18
+	x^=y;
+  f2:	90 91 62 00 	lds	r25, 0x0062
+  f6:	98 27       	eor	r25, r24
+  f8:	90 93 62 00 	sts	0x0062, r25
+}
+  fc:	08 95       	ret
+
+000000fe <_exit>:
+  fe:	f8 94       	cli
+
+00000100 <__stop_program>:
+ 100:	ff cf       	rjmp	.-2      	; 0x100 <__stop_program>
