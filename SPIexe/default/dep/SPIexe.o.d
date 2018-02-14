@@ -1,0 +1,1 @@
+SPIexe.o: ../SPIexe.c
